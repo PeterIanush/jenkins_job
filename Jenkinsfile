@@ -86,12 +86,7 @@ pipeline {
                     sh "./jenkins/build-bootstrap.sh RELEASE=${params.RELEASE} GIT_BRANCH=${params.GIT_BRANCH} BUILD_NUMBER=${params.BUILD_NUMBER}"
                 }
             }
-            steps{
-                script{
 
-                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-US} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-US}"
-                }
-            }
         }
         
         stage ('Deploy sftp USA') {
@@ -110,8 +105,6 @@ pipeline {
         
         stage ('Deploy sftp EU'){
         	
-        	agent any
-
         	steps{
 
                 script{
