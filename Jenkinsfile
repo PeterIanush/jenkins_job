@@ -59,7 +59,7 @@ pipeline {
         }
         ansiColor('xterm')
       }
-      environment ('Docker env'){
+      environment {
           IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
       }
     }
@@ -71,18 +71,7 @@ pipeline {
             steps {
                 checkout scm
             }
-        }
-
-        stage('Docker Build'){
-        	agent {
-        		docker {
-        			
-        			reuseNode false
-        			image 'docker-registry.nexus.bazaarvoice.com/dataplatform/build'
-
-        		}
-        	}
-        }     	
+        }   	
         	
         stage ('Build bootstrap rpm') {
         	
@@ -102,7 +91,7 @@ pipeline {
         }
         
         
-        stage {
+        stage ('Deploy sftp EU'){
         	
         	agent any 
         	steps{
