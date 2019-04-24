@@ -35,7 +35,7 @@ pipeline {
         	description: 'QA server')
         string(
         	name: 'REGIONUS',
-        	defaultValue: 'us-east-1',
+        	defaultValue: "us-east-1",
         	description: 'usa-sftp')
         string(
         	name: 'CLUSTERUS',
