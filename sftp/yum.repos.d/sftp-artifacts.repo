@@ -1,6 +1,0 @@
-[sftp-artifacts]
-gpgcheck = 0
-s3_enabled = 1
-enabled = 1
-baseurl = https://bv-sftp-artifacts.s3.amazonaws.com/yum-repos/artifacts
-name = sftp-artifacts
