@@ -4,10 +4,7 @@ pipeline {
 		Build bootstrap RPM for SFTP instances.
 		Once bootstrap is ready, tiggers QA deployment.
 	*/
-
-	
-    node{
-      lable "master"
+    agent none
       parameters {
         string(
             name: 'BOOTSTRAP_NAME',
@@ -62,7 +59,6 @@ pipeline {
       environment {
           IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
       }
-    }
   
 
   stages {
