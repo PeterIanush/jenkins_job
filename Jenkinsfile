@@ -48,20 +48,22 @@ pipeline {
         	descrption: '')
                   
       }
-      options {
+      
+  
+
+  stages {
+
+        options {
         buildDiscarder(logRotator(numToKeepStr: '20'))
         tomeout(time: 1, unit: 'HOURS')
         timestamps{
             echo "$entry.value"
         }
         ansiColor('xterm')
-      }
-      environment {
-          IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
-      }
-  
-
-  stages {
+        }
+        environment {
+            IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
+        }
 
         stage('SCM'){
             steps {
