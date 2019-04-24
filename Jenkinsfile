@@ -5,17 +5,21 @@ pipeline {
 		Once bootstrap is ready, tiggers QA deployment.
 	*/
     agent any 
+
+    //Envioroment
+    environment {
+            IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
+    }
+
+    //Options
     options {
         buildDiscarder(logRotator(numToKeepStr: '20'))
+        timestamps()
         tomeout(time: 1, unit: 'HOURS')
-        ansiColor('xterm')
-        
-        timestamps{
-            echo "$entry.value"
-        }
-        
+        ansiColor('xterm')           
     }
-    
+
+    //Parameters
       parameters {
         string(
             name: 'BOOTSTRAP_NAME',
@@ -63,10 +67,6 @@ pipeline {
   
 
   stages {
-
-        environment {
-            IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
-        }
 
         stage('SCM'){
             steps {
