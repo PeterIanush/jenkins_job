@@ -34,19 +34,19 @@ pipeline {
         	defaultValue: 'sftp-qa',
         	description: 'QA server')
         string(
-        	name: 'REGION-US',
+        	name: 'REGIONUS',
         	defaultValue: 'us-east-1',
         	description: 'usa-sftp')
         string(
-        	name: 'CLUSTER-US',
+        	name: 'CLUSTERUS',
         	defaultValue: 'c0',
         	description: 'usa-claster')
         string(
-        	name: 'REGION-EU',
+        	name: 'REGIONEU',
         	defaultValue: 'eu-west-1',
         	description: 'europe-sftp')
         string(
-        	name: 'CLUSTER-EU',
+        	name: 'CLUSTEREU',
         	defaultValue: 'c7',
         	description: 'europe-claster')
         string(
@@ -102,7 +102,7 @@ pipeline {
         	steps{
                 script{
 
-                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-US} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-US}"
+                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGIONUS} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTERUS}"
                 }
             }
         	
@@ -115,7 +115,7 @@ pipeline {
 
                 script{
 
-                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-EU} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-EU}"
+                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGIONEU} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTEREU}"
                 }
             }
         }
