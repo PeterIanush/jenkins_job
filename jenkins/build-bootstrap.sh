@@ -1,3 +1,4 @@
+#!/bin/sh
 # Script bundles puppet modules and bootstrap scripts into RPM package.
 # It's meant to be triggered from Jenkins job.
 # Expected environment variables: JENKINS_HOME, WORKSPACE, RELEASE, GIT_BRANCH, BUILD_NUMBER.

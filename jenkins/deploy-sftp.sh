@@ -1,3 +1,4 @@
+#!/bin/sh
 # Script deploys sftp stack.
 # It's meant to be triggered from Jenkins job.
 # Expected environment variables: JENKINS_HOME, WORKSPACE, BOOTSTRAP_NAME, ACTION, REGION, ENVIRONMENT, STACK_NAME, CLUSTER.
