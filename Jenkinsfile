@@ -63,7 +63,7 @@ pipeline {
         	description: '')
         string(
             name: 'BUILD_NUMBER',
-            defaultValue: 'deploy/cfn && enviroment/qa && account/bv-nexus-qa',
+            defaultValue: 'deploy/cfn',
             description: '')
                   
       }
