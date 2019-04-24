@@ -1,0 +1,5 @@
+[nexus-public-artifacts]
+gpgcheck = 0
+enabled = 1
+baseurl = https://nexus-public-artifacts.s3.amazonaws.com/yum-repo
+name = nexus-public-artifacts

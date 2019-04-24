@@ -1,0 +1,6 @@
+[bv-app]
+gpgcheck = 0
+s3_enabled = 1
+enabled = 0
+baseurl = https://bv-dataplatform.s3.amazonaws.com/yum-repos/prr-rpms/release-{{RELEASE}}
+name = bv-app
