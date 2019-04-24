@@ -78,7 +78,7 @@ pipeline {
         	
         	agent any 
         	steps {
-                sh './jenkins/build-bootstrap.sh RELEASE={params.RELEASE} GIT_BRANCH=${params.GIT_BRANCH} BUILD_NUMBER=${params.BUILD_NUMBER}'
+                sh './jenkins/build-bootstrap.sh RELEASE=${params.RELEASE} GIT_BRANCH=${params.GIT_BRANCH} BUILD_NUMBER=${params.BUILD_NUMBER}'
             }
         }
         
