@@ -88,6 +88,12 @@ pipeline {
             }
 
         }
+
+        stage('SCM'){
+            steps {
+                checkout scm
+            }
+        }
         
         stage ('Deploy sftp USA') {
         	
