@@ -109,7 +109,7 @@ pipeline {
         	steps{
 
                 script{
-                    
+
                     sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-EU} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-EU}"
                 }
             }
@@ -120,7 +120,7 @@ pipeline {
 
 
 
-  post {
+ /* post {
             failure {
                     mail subject: "${currentBuild.fullDisplayName} FAILURE",
                     body: "${env.BUILD_URL}",
@@ -135,4 +135,5 @@ pipeline {
                     cleanWs()
                    }
         }
+*/        
 }
