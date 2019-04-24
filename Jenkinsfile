@@ -4,7 +4,18 @@ pipeline {
 		Build bootstrap RPM for SFTP instances.
 		Once bootstrap is ready, tiggers QA deployment.
 	*/
-    agent none
+    agent any 
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '20'))
+        tomeout(time: 1, unit: 'HOURS')
+        ansiColor('xterm')
+        
+        timestamps{
+            echo "$entry.value"
+        }
+        
+    }
+    
       parameters {
         string(
             name: 'BOOTSTRAP_NAME',
@@ -53,14 +64,6 @@ pipeline {
 
   stages {
 
-        options {
-        buildDiscarder(logRotator(numToKeepStr: '20'))
-        tomeout(time: 1, unit: 'HOURS')
-        timestamps{
-            echo "$entry.value"
-        }
-        ansiColor('xterm')
-        }
         environment {
             IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
         }
