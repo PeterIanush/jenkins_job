@@ -61,6 +61,10 @@ pipeline {
         	name: 'LABLE',
         	defaultValue: 'deploy/cfn && enviroment/qa && account/bv-nexus-qa',
         	description: '')
+        string(
+            name: 'BUILD_NUMBER',
+            defaultValue: 'deploy/cfn && enviroment/qa && account/bv-nexus-qa',
+            description: '')
                   
       }
       
