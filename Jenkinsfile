@@ -89,7 +89,7 @@ pipeline {
 
         }
 
-        stage('SCM'){
+        stage('SCM_USA'){
             steps {
                 checkout scm
             }
