@@ -54,10 +54,12 @@ pipeline {
       options {
         buildDiscarder(logRotator(numToKeepStr: '20'))
         tomeout(time: 1, unit: 'HOURS')
-        timestamps()
+        timestamps{
+            echo "$entry.value"
+        }
         ansiColor('xterm')
       }
-      environment {
+      environment ('Docker env'){
           IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
       }
     }
@@ -80,21 +82,22 @@ pipeline {
 
         		}
         	}
-        }
- 	
-	
-        	
+        }     	
         	
         stage ('Build bootstrap rpm') {
         	
         	agent any 
-        	sh './jenkins/build-bootstrap.sh RELEASE={params.RELEASE} GIT_BRANCH=${params.GIT_BRANCH} BUILD_NUMBER=${params.BUILD_NUMBER}'
+        	steps {
+                sh './jenkins/build-bootstrap.sh RELEASE={params.RELEASE} GIT_BRANCH=${params.GIT_BRANCH} BUILD_NUMBER=${params.BUILD_NUMBER}'
+            }
         }
         
         stage ('Deploy sftp USA') {
         	
         	agent any 
-        	sh './jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-US} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-US}'
+        	steps{
+                sh './jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-US} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-US}'
+            }
         	
         }
         
@@ -102,8 +105,9 @@ pipeline {
         stage {
         	
         	agent any 
-        	sh './jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-EU} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-EU}'
-        	
+        	steps{
+                sh './jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-EU} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-EU}'
+            }
         }
         
 
