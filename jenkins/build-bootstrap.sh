@@ -5,9 +5,9 @@
 
 set -exu
 
-echo $JENKINS_HOME >> ./logs/JENKINS_HOME.txt
-echo $WORKSPACE >> ./logs/WORKSPACE.txt
-echo $RELEASE >> ./logs/RELEASE.txt
-echo $GIT_BRANCH >> ./logs/GIT_BRANCH.txt
-echo $BUILD_NUMBER >> ./logs/BUILD_NUMBER.txt
+echo '$JENKINS_HOME' >> ./logs/JENKINS_HOME.txt
+echo '$WORKSPACE' >> ./logs/WORKSPACE.txt
+echo '$RELEASE' >> ./logs/RELEASE.txt
+echo '$GIT_BRANCH' >> ./logs/GIT_BRANCH.txt
+echo '$BUILD_NUMBER' >> ./logs/BUILD_NUMBER.txt
 
