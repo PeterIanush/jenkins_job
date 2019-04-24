@@ -91,11 +91,12 @@ pipeline {
         stage ('Deploy sftp USA') {
         	
         	agent any
-            steps {
-                checkout scm
-            } 
+            
         	steps{
-                sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-US} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-US}"
+                script{
+
+                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-US} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-US}"
+                }
             }
         	
         }
@@ -104,11 +105,13 @@ pipeline {
         stage ('Deploy sftp EU'){
         	
         	agent any
-            steps {
-                checkout scm
-            } 
+
         	steps{
-                sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-EU} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-EU}"
+
+                script{
+                    
+                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGION-EU} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTER-EU}"
+                }
             }
         }
         
