@@ -28,39 +28,39 @@ pipeline {
         string(
         	name: 'ACTION',
         	defaultValue: 'update',
-        	descrption: 'update')
+        	description: 'update')
         string(
         	name: 'STACK_NAME',
         	defaultValue: 'sftp-qa',
-        	descrption: 'QA server')
+        	description: 'QA server')
         string(
         	name: 'REGION-US',
         	defaultValue: 'us-east-1',
-        	descrption: 'usa-sftp')
+        	description: 'usa-sftp')
         string(
         	name: 'CLUSTER-US',
         	defaultValue: 'c0',
-        	descrption: 'usa-claster')
+        	description: 'usa-claster')
         string(
         	name: 'REGION-EU',
         	defaultValue: 'eu-west-1',
-        	descrption: 'europe-sftp')
+        	description: 'europe-sftp')
         string(
         	name: 'CLUSTER-EU',
         	defaultValue: 'c7',
-        	descrption: 'europe-claster')
+        	description: 'europe-claster')
         string(
         	name: 'GIT_BRANCH',
         	defaultValue: 'master',
-        	descrption: 'Git branch name')
+        	description: 'Git branch name')
         string(
         	name: 'RELEASE',
         	defaultValue: '33.0',
-        	descrption: 'number of release')
+        	description: 'number of release')
         string(
         	name: 'LABLE',
         	defaultValue: 'deploy/cfn && enviroment/qa && account/bv-nexus-qa',
-        	descrption: '')
+        	description: '')
                   
       }
       
