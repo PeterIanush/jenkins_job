@@ -5,7 +5,7 @@ pipeline {
 		Once bootstrap is ready, tiggers QA deployment.
 	*/
 
-	agent {
+	
     node{
       lable "master"
       parameters {
@@ -63,7 +63,7 @@ pipeline {
           IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
       }
     }
-  }
+  
 
   stages {
 
