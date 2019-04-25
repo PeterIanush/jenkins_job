@@ -101,7 +101,8 @@ pipeline {
 
         	steps {
                 script {
-                    sh "./jenkins/build-bootstrap.sh RELEASE=${params.RELEASE} GIT_BRANCH=${params.GIT_BRANCH} BUILD_NUMBER=${params.BUILD_NUMBER}"
+                    sh "printenv"
+                    sh "./jenkins/build-bootstrap.sh"
                 }
             }
 
@@ -120,7 +121,7 @@ pipeline {
 
         	steps{
                 script{
-                    
+                    sh "printenv"
                     sh "./jenkins/deploy-sftp.sh"
                 }
             }  	

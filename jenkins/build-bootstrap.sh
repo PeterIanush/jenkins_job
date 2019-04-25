@@ -6,9 +6,9 @@
 set -exu
 
 
-RELEASE=$1
-GIT_BRANCH=$2
-BUILD_NUMBER=$3
+#RELEASE=$1
+#GIT_BRANCH=$2
+#BUILD_NUMBER=$3
 
 echo $JENKINS_HOME >> ./logs/JENKINS_HOME.txt
 echo $WORKSPACE >> ./logs/WORKSPACE.txt
