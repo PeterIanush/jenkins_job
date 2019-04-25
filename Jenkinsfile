@@ -86,18 +86,7 @@ pipeline {
             steps {
                 checkout scm
             }
-        }
-
-        stage ('Export enviroment variables') {
-            
-            agent any 
-            steps {
-                script {
-                    sh "printenv"
-                }
-            }
-
-        }   	
+        }	
         	
         stage ('Build bootstrap rpm') {
         	
@@ -110,18 +99,12 @@ pipeline {
                 }
             }
 
-        }
-        
+        }    
     
 
         stage ('Deploy sftp USA') {
         	
         	agent any
-            
-            environment {
-                REGION="us-east-1"
-                CLUSTER="c0"
-            }
 
         	steps{
                 script{
@@ -153,7 +136,9 @@ pipeline {
         	steps{
 
                 script{
-
+                    sh "export REGION="eu-west-1""
+                    sh "export CLUSTER="c7""
+                    sh "printenv"
                     sh "./jenkins/deploy-sftp.sh"
                 }
             }
