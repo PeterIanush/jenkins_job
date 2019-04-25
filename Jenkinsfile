@@ -5,20 +5,7 @@ pipeline {
 		Once bootstrap is ready, tiggers QA deployment.
 	*/
     agent any 
-
-    //Envioroment
-    environment {
-            IAM_ROLE_NAME='nexus/jenkins/job/SftpBuild'
-            BOOTSTRAP_NAME='bv-bootstrap-$GIT_BRANCH-$BUILD_NUMBER'
-            ACTION='update'
-            STACK_NAME='sftp-qa'
-            GIT_BRANCH='master'
-            RELEASE='33.0'
-            LABLE='deploy/cfn && enviroment/qa && account/bv-nexus-qa'
-            BUILD_NUMBER='deploy/cfn'
-
-    }
-
+    
     //Options
     options {
         buildDiscarder(logRotator(numToKeepStr: '20'))
@@ -26,6 +13,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         //ansiColor('xterm')           
     }
+
     //Parameters
       parameters {
         string(
@@ -48,14 +36,6 @@ pipeline {
         	name: 'CLUSTER',
         	defaultValue: 'c0',
         	description: 'usa-claster')
-        /*string(
-        	name: 'REGIONEU',
-        	defaultValue: 'eu-west-1',
-        	description: 'europe-sftp')
-        string(
-        	name: 'CLUSTEREU',
-        	defaultValue: 'c7',
-        	description: 'europe-claster')*/
         string(
         	name: 'GIT_BRANCH',
         	defaultValue: 'master',
@@ -75,11 +55,9 @@ pipeline {
         string(
             name: 'ENVIRONMENT',
             defaultValue: 'nexus/jenkins/job/SftpBuild',
-            description: '---')
-                  
+            description: '---')                 
       }
       
-
   stages {
 
         stage('SCM'){
@@ -100,7 +78,6 @@ pipeline {
             }
 
         }    
-    
 
         stage ('Deploy sftp USA') {
         	
@@ -114,24 +91,7 @@ pipeline {
             }  	
         }
         
-        stage ('Check enviroment variables') {
-            
-            agent any 
-            steps {
-                script {
-                    sh "printenv"
-                }
-            }
-
-        }  
-
-        
         stage ('Deploy sftp EU'){
-        	
-            environment {
-                REGION="eu-west-1"
-                CLUSTER="c7"
-            }
 
         	steps{
 
