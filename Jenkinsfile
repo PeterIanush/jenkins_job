@@ -91,7 +91,7 @@ pipeline {
             agent any 
             steps {
                 script {
-                    sh "RELEASE=${params.RELEASE} GIT_BRANCH=${params.GIT_BRANCH} BUILD_NUMBER=${params.BUILD_NUMBER}"
+                    sh "printenv"
                 }
             }
 
