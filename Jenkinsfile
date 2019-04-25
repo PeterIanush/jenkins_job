@@ -26,7 +26,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         //ansiColor('xterm')           
     }
-
+/*
     //Parameters
       parameters {
         string(
@@ -76,7 +76,7 @@ pipeline {
                   
       }
       
-  
+  */
 
   stages {
 
