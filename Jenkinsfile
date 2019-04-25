@@ -118,6 +118,12 @@ pipeline {
                 CLUSTER="c0"
             }
 
+            steps {
+                script {
+                    sh "printenv"
+                }
+            }
+
         	steps{
                 script{
                     
@@ -137,6 +143,12 @@ pipeline {
                 CLUSTER="c7"
             }
 
+            steps {
+                script {
+                    sh "printenv"
+                }
+            }
+            
         	steps{
 
                 script{
