@@ -113,6 +113,19 @@ pipeline {
         	
         	agent any
             
+            parameters {
+        
+        string(
+            name: 'REGION',
+            defaultValue: 'us-east-1',
+            description: 'usa-sftp')
+        string(
+            name: 'CLUSTER',
+            defaultValue: 'c0',
+            description: 'usa-claster')
+
+            }
+
             environment {
                 REGION="us-east-1"
                 CLUSTER="c0"
@@ -129,6 +142,17 @@ pipeline {
         
         stage ('Deploy sftp EU'){
         	
+            parameters{
+                string(
+                    name: 'REGION',
+                    defaultValue: 'eu-west-1',
+                    description: 'europe-sftp')
+                string(
+                    name: 'CLUSTER',
+                    defaultValue: 'c7',
+                    description: 'europe-claster')
+            }
+
             environment {
                 REGION="eu-west-1"
                 CLUSTER="c7"
