@@ -109,23 +109,23 @@ pipeline {
 
         }
         
+        parameters {
+        
+            string(
+                name: 'REGION',
+                defaultValue: 'us-east-1',
+                description: 'usa-sftp')
+            string(
+                name: 'CLUSTER',
+                defaultValue: 'c0',
+                description: 'usa-claster')
+
+        }
+
         stage ('Deploy sftp USA') {
         	
         	agent any
             
-            parameters {
-        
-        string(
-            name: 'REGION',
-            defaultValue: 'us-east-1',
-            description: 'usa-sftp')
-        string(
-            name: 'CLUSTER',
-            defaultValue: 'c0',
-            description: 'usa-claster')
-
-            }
-
             environment {
                 REGION="us-east-1"
                 CLUSTER="c0"
@@ -139,10 +139,7 @@ pipeline {
             }  	
         }
         
-        
-        stage ('Deploy sftp EU'){
-        	
-            parameters{
+        parameters {
                 string(
                     name: 'REGION',
                     defaultValue: 'eu-west-1',
@@ -151,7 +148,11 @@ pipeline {
                     name: 'CLUSTER',
                     defaultValue: 'c7',
                     description: 'europe-claster')
-            }
+        }
+        
+        stage ('Deploy sftp EU'){
+        	
+            
 
             environment {
                 REGION="eu-west-1"
