@@ -118,13 +118,7 @@ pipeline {
                 CLUSTER="c0"
             }
 
-            step {
-                script {
-                    sh "printenv"
-                }
-            }
-
-        	step{
+        	steps{
                 script{
                     
                     sh "./jenkins/deploy-sftp.sh"
@@ -132,21 +126,23 @@ pipeline {
             }  	
         }
         
-
-        
-        stage ('Deploy sftp EU'){
-        	
+        stage ('Export enviroment variables') {
             
-
-            environment {
-                REGION="eu-west-1"
-                CLUSTER="c7"
-            }
-
+            agent any 
             steps {
                 script {
                     sh "printenv"
                 }
+            }
+
+        }  
+
+        
+        stage ('Deploy sftp EU'){
+        	
+            environment {
+                REGION="eu-west-1"
+                CLUSTER="c7"
             }
 
         	steps{
