@@ -35,7 +35,7 @@ pipeline {
         	description: 'QA server')
         string(
         	name: 'REGIONUS',
-        	defaultValue: "us-east-1",
+        	defaultValue: 'us-east-1',
         	description: 'usa-sftp')
         string(
         	name: 'CLUSTERUS',
@@ -102,7 +102,7 @@ pipeline {
         	steps{
                 script{
 
-                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION='text' ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTERUS}"
+                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGIONUS} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTERUS}"
                 }
             }
         	
