@@ -26,7 +26,6 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
         //ansiColor('xterm')           
     }
-/*
     //Parameters
       parameters {
         string(
@@ -41,7 +40,7 @@ pipeline {
         	name: 'STACK_NAME',
         	defaultValue: 'sftp-qa',
         	description: 'QA server')
-        string(
+       /* string(
         	name: 'REGIONUS',
         	defaultValue: 'us-east-1',
         	description: 'usa-sftp')
@@ -56,7 +55,7 @@ pipeline {
         string(
         	name: 'CLUSTEREU',
         	defaultValue: 'c7',
-        	description: 'europe-claster')
+        	description: 'europe-claster')*/
         string(
         	name: 'GIT_BRANCH',
         	defaultValue: 'master',
@@ -76,7 +75,6 @@ pipeline {
                   
       }
       
-  */
 
   stages {
 
@@ -109,18 +107,7 @@ pipeline {
 
         }
         
-        parameters {
-        
-            string(
-                name: 'REGION',
-                defaultValue: 'us-east-1',
-                description: 'usa-sftp')
-            string(
-                name: 'CLUSTER',
-                defaultValue: 'c0',
-                description: 'usa-claster')
-
-        }
+    
 
         stage ('Deploy sftp USA') {
         	
@@ -139,16 +126,7 @@ pipeline {
             }  	
         }
         
-        parameters {
-                string(
-                    name: 'REGION',
-                    defaultValue: 'eu-west-1',
-                    description: 'europe-sftp')
-                string(
-                    name: 'CLUSTER',
-                    defaultValue: 'c7',
-                    description: 'europe-claster')
-        }
+
         
         stage ('Deploy sftp EU'){
         	
