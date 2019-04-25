@@ -40,15 +40,15 @@ pipeline {
         	name: 'STACK_NAME',
         	defaultValue: 'sftp-qa',
         	description: 'QA server')
-       /* string(
-        	name: 'REGIONUS',
+        string(
+        	name: 'REGION',
         	defaultValue: 'us-east-1',
         	description: 'usa-sftp')
         string(
-        	name: 'CLUSTERUS',
+        	name: 'CLUSTER',
         	defaultValue: 'c0',
         	description: 'usa-claster')
-        string(
+        /*string(
         	name: 'REGIONEU',
         	defaultValue: 'eu-west-1',
         	description: 'europe-sftp')
