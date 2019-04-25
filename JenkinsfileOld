@@ -8,15 +8,7 @@ pipeline {
 
     //Envioroment
     environment {
-            IAM_ROLE_NAME='nexus/jenkins/job/SftpBuild'
-            BOOTSTRAP_NAME='bv-bootstrap-$GIT_BRANCH-$BUILD_NUMBER'
-            ACTION='update'
-            STACK_NAME='sftp-qa'
-            GIT_BRANCH='master'
-            RELEASE='33.0'
-            LABLE='deploy/cfn && enviroment/qa && account/bv-nexus-qa'
-            BUILD_NUMBER='deploy/cfn'
-
+            IAM_ROLE_NAME="nexus/jenkins/job/SftpBuild"
     }
 
     //Options
@@ -84,23 +76,11 @@ pipeline {
             steps {
                 checkout scm
             }
-        }
-
-        stage ('Export enviroment variables') {
-            
-            agent any 
-            steps {
-                script {
-                    sh "RELEASE=${params.RELEASE} GIT_BRANCH=${params.GIT_BRANCH} BUILD_NUMBER=${params.BUILD_NUMBER}"
-                }
-            }
-
         }   	
         	
         stage ('Build bootstrap rpm') {
         	
         	agent any 
-
         	steps {
                 script {
                     sh "./jenkins/build-bootstrap.sh RELEASE=${params.RELEASE} GIT_BRANCH=${params.GIT_BRANCH} BUILD_NUMBER=${params.BUILD_NUMBER}"
@@ -113,37 +93,31 @@ pipeline {
         	
         	agent any
             
-            environment {
-                REGION="us-east-1"
-                CLUSTER="c0"
-            }
-
         	steps{
                 script{
-                    
-                    sh "./jenkins/deploy-sftp.sh"
+
+                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGIONUS} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTERUS}"
                 }
-            }  	
+            }
+        	
         }
         
         
         stage ('Deploy sftp EU'){
         	
-            environment {
-                REGION="eu-west-1"
-                CLUSTER="c7"
-            }
-
         	steps{
 
                 script{
 
-                    sh "./jenkins/deploy-sftp.sh"
+                    sh "./jenkins/deploy-sftp.sh BOOTSTRAP_NAME=${params.BOOTSTRAP_NAME} ACTION=${params.ACTION} REGION=${params.REGIONEU} ENVIRONMENT=${env.IAM_ROLE_NAME} STACK_NAME=${params.STACK_NAME} CLUSTER=${params.CLUSTEREU}"
                 }
             }
-        }       
+        }
+        
 
     }  
+
+
 
     post {
             failure {
