@@ -118,13 +118,13 @@ pipeline {
                 CLUSTER="c0"
             }
 
-            steps {
+            step {
                 script {
                     sh "printenv"
                 }
             }
 
-        	steps{
+        	step{
                 script{
                     
                     sh "./jenkins/deploy-sftp.sh"
@@ -148,7 +148,7 @@ pipeline {
                     sh "printenv"
                 }
             }
-            
+
         	steps{
 
                 script{
