@@ -126,7 +126,7 @@ pipeline {
             }  	
         }
         
-        stage ('Export enviroment variables') {
+        stage ('Check enviroment variables') {
             
             agent any 
             steps {
