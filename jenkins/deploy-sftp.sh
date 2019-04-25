@@ -13,7 +13,7 @@ ENVIRONMENT=$6
 STACK_NAME=$7
 CLUSTER=$8
 
-echo ${JENKINS_HOME} >> ./logs/JENKINS_HOME.txt
+echo $JENKINS_HOME >> ./logs/JENKINS_HOME.txt
 echo $WORKSPACE >> ./logs/WORKSPACE.txt
 echo $BOOTSTRAP_NAME >> ./logs/BOOTSTRAP_NAME.txt
 echo $ACTION>> ./logs/ACTION.txt
