@@ -136,8 +136,8 @@ pipeline {
         	steps{
 
                 script{
-                    sh "export REGION="eu-west-1""
-                    sh "export CLUSTER="c7""
+                    sh 'export REGION="eu-west-1"'
+                    sh 'export CLUSTER="c7"'
                     sh "printenv"
                     sh "./jenkins/deploy-sftp.sh"
                 }
