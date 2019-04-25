@@ -72,6 +72,10 @@ pipeline {
             name: 'BUILD_NUMBER',
             defaultValue: 'deploy/cfn',
             description: '')
+        string(
+            name: 'ENVIRONMENT',
+            defaultValue: 'nexus/jenkins/job/SftpBuild',
+            description: '---')
                   
       }
       
