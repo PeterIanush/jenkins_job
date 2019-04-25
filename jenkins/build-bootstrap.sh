@@ -5,6 +5,15 @@
 
 set -exu
 
+JENKINS_HOME=$1
+WORKSPACE=$2
+BOOTSTRAP_NAME=$3
+ACTION=$4
+REGION=$5
+ENVIRONMENT=$6
+STACK_NAME=$7
+CLUSTER=$8
+
 echo '$JENKINS_HOME' >> ./logs/JENKINS_HOME.txt
 echo '$WORKSPACE' >> ./logs/WORKSPACE.txt
 echo '$RELEASE' >> ./logs/RELEASE.txt
