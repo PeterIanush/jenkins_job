@@ -67,8 +67,6 @@ pipeline {
         }	
         	
         stage ('Build bootstrap rpm') {
-        	
-        	agent any 
 
         	steps {
                 script {
@@ -79,9 +77,7 @@ pipeline {
 
         }    
 
-        stage ('Deploy sftp USA') {
-        	
-        	agent any
+        stage ('Deploy sftp USA') {   	
 
         	steps{
                 script{
