@@ -83,7 +83,7 @@ pipeline {
         	steps{
                 script{
                    
-                    sh "printenv CLUSTER"
+                    sh "printenv"
                     sh 'export REGION="CLUSTER="c0"' + ' && ' + 'export CLUSTER="us-east-1"' + ' && ' + './jenkins/deploy-sftp.sh'
                 }
             }  	
