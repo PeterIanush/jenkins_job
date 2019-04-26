@@ -81,10 +81,10 @@ pipeline {
 
         	steps{
                 script{
-                    sh 'export REGION="us-east-1"'
-                    sh "export CLUSTER="c0""
+                   
+                    sh 'export CLUSTER="c0"'
                     sh "printenv"
-                    sh "export REGION='us-east-1' && ./jenkins/deploy-sftp.sh"
+                    sh 'export REGION="us-east-1"' && './jenkins/deploy-sftp.sh'
                 }
             }  	
         }
