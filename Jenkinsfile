@@ -28,14 +28,14 @@ pipeline {
         	name: 'STACK_NAME',
         	defaultValue: 'sftp-qa',
         	description: 'QA server')
-        string(
+        /*string(
         	name: 'REGION',
         	defaultValue: 'us-east-1',
         	description: 'usa-sftp')
         string(
         	name: 'CLUSTER',
         	defaultValue: 'c0',
-        	description: 'usa-claster')
+        	description: 'usa-claster')*/
         string(
         	name: 'GIT_BRANCH',
         	defaultValue: 'master',
