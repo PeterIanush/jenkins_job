@@ -92,6 +92,8 @@ pipeline {
         	steps{
 
                 script{
+                    sh 'unset REGION'
+                    sh 'unset CLUSTER'
                     sh 'export REGION="eu-west-1"'
                     sh 'export CLUSTER="c7"'
                     sh "printenv"
