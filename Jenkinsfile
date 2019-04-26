@@ -70,6 +70,7 @@ pipeline {
 
         	steps {
                 script {
+                    
                     sh "printenv"
                     sh "./jenkins/build-bootstrap.sh"
                 }
@@ -82,9 +83,8 @@ pipeline {
         	steps{
                 script{
                    
-                    sh 'export CLUSTER="c0"'
                     sh "printenv"
-                    sh 'export REGION="us-east-1"' + '&&' + './jenkins/deploy-sftp.sh'
+                    sh 'export REGION="CLUSTER="c0"' + ' && ' + 'export REGION="us-east-1"' + ' && ' + './jenkins/deploy-sftp.sh'
                 }
             }  	
         }
